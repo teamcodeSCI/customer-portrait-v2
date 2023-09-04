@@ -12,10 +12,13 @@ const Home = () => {
         <Card title={'Gia đình/tình trạng hôn nhân'} background={styleColor[2].background} />
       </div>
       <div className={style['item']}>
-        <div style={{ background: styleColor[3].background }} className={style['title']}>
+        <div
+          style={{ background: styleColor[3].background, borderColor: styleColor[3].border }}
+          className={style['title']}
+        >
           Đoàn Minh Đức
         </div>
-        <Card title={'Thông tin cá nhân'} background={styleColor[2].background} />
+        <Card title={'Thông tin cá nhân'} background={styleColor[8].background} />
         <div className={style['avatar']}>
           <img src={process.env.PUBLIC_URL + '/assets/images/profile.jpg'} alt="" />
         </div>
