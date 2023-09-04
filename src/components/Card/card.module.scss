@@ -1,0 +1,18 @@
+.card {
+  padding: 20px;
+  border-radius: 4px;
+  border: 1px solid transparent;
+  .title {
+    font-size: 16px;
+    font-weight: 900;
+  }
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0;
+    font-size: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+}
