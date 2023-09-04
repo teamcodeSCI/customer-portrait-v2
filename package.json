@@ -1,6 +1,7 @@
 {
   "name": "customer-portrait-v2",
   "version": "0.1.0",
+  "homepage": "https://teamcodeSCI.github.io/customer-portrait-v2",
   "private": true,
   "dependencies": {
     "@fontsource/barlow": "^5.0.8",
@@ -19,6 +20,8 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-app-rewired start",
     "build": "react-app-rewired build",
     "test": "react-app-rewired test",
@@ -45,6 +48,7 @@
   "devDependencies": {
     "babel-plugin-module-resolver": "^5.0.0",
     "customize-cra": "^1.0.0",
+    "gh-pages": "^6.0.0",
     "react-app-rewired": "^2.2.1"
   }
 }
