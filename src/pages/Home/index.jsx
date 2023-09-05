@@ -6,11 +6,16 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchCustomer } from '@/features/customer/customerApi';
 import { customerSelector, loadedCustomerSelector, loadingCustomerSelector } from '@/features/customer/customerSlice';
 import { setAddress } from '@/utils/util';
-
+import { Navigate, useNavigate, useSearchParams } from 'react-router-dom';
+//535842
 const Home = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+  const companyId = searchParams.get('companyId');
+  const partnerId = searchParams.get('partnerId');
   const customer = useSelector(customerSelector);
-  console.log('customer: ', customer);
+
   const loaded = useSelector(loadedCustomerSelector);
   const loading = useSelector(loadingCustomerSelector);
   let gender = '';
@@ -24,8 +29,12 @@ const Home = () => {
     }
   }
   useEffect(() => {
-    dispatch(fetchCustomer({ companyId: 2, partnerId: 535842 }));
-  }, [dispatch]);
+    if (companyId && partnerId && Number(partnerId) !== 0 && Number(partnerId) !== 0) {
+      dispatch(fetchCustomer({ companyId: Number(companyId), partnerId: Number(partnerId) }));
+    } else {
+      navigate('/page-not-found');
+    }
+  }, [dispatch, companyId, partnerId, navigate]);
   return (
     <div className={style['home']}>
       <div className={style['item']}>
@@ -77,6 +86,7 @@ const Home = () => {
         <Card title={'Sở thích'} background={styleColor[5].background} />
         <Card title={'Tài chính'} background={styleColor[6].background} />
       </div>
+      {customer === undefined && <Navigate to={'/page-not-found'} />}
     </div>
   );
 };

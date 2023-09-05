@@ -21,9 +21,9 @@ const customerSlice = createSlice({
         state.customer = action.payload;
       })
       .addCase(fetchCustomer.rejected, (state, action) => {
-        console.log('action: ', action);
         state.loading = false;
         state.loaded = false;
+        state.customer = undefined;
       });
   },
 });
