@@ -6,13 +6,17 @@ import './index.scss';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter as Router } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import store from './app/store';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Router basename="/customer-portrait-v2">
-      <App />
-    </Router>
+    <Provider store={store}>
+      <Router basename="/customer-portrait-v2">
+        <App />
+      </Router>
+    </Provider>
   </React.StrictMode>,
 );
 

@@ -1,9 +1,31 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import style from './home.module.scss';
 import Card from '@/components/Card';
 import { styleColor } from '@/utils/const';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchCustomer } from '@/features/customer/customerApi';
+import { customerSelector, loadedCustomerSelector, loadingCustomerSelector } from '@/features/customer/customerSlice';
+import { setAddress } from '@/utils/util';
 
 const Home = () => {
+  const dispatch = useDispatch();
+  const customer = useSelector(customerSelector);
+  console.log('customer: ', customer);
+  const loaded = useSelector(loadedCustomerSelector);
+  const loading = useSelector(loadingCustomerSelector);
+  let gender = '';
+  if (loaded) {
+    if (customer.data.thong_tin_chung[0].gender === 'female') {
+      gender = 'Nữ';
+    } else if (customer.data.thong_tin_chung[0].gender === 'male') {
+      gender = 'Nam';
+    } else {
+      gender = '';
+    }
+  }
+  useEffect(() => {
+    dispatch(fetchCustomer({ companyId: 2, partnerId: 535842 }));
+  }, [dispatch]);
   return (
     <div className={style['home']}>
       <div className={style['item']}>
@@ -16,11 +38,37 @@ const Home = () => {
           style={{ background: styleColor[3].background, borderColor: styleColor[3].border }}
           className={style['title']}
         >
-          Đoàn Minh Đức
+          {(loaded && customer.data.thong_tin_chung[0].name) || '...'}
         </div>
-        <Card title={'Thông tin cá nhân'} background={styleColor[8].background} />
+        {loaded && (
+          <div className={style['personalInfo']}>
+            <span>Thông tin cá nhân</span>
+            <ul>
+              <li>- Giới tính: {gender || '...'}</li>
+              <li>- Hộ chiếu: {customer.data.thong_tin_chung[0].pass_port || '...'}</li>
+              <li>- Ngày sinh: {customer.data.thong_tin_chung[0].bird_date || '...'}</li>
+              <li>- Số điện thoại 1: {customer.data.thong_tin_chung[0].phone || '...'}</li>
+              <li>- Số điện thoại 2: {customer.data.thong_tin_chung[0].mobile || '...'}</li>
+              <li>
+                - Địa chỉ:{' '}
+                {setAddress({
+                  street: customer.data.thong_tin_chung[0].street,
+                  district_name: customer.data.thong_tin_chung[0].district_name,
+                  state_name: customer.data.thong_tin_chung[0].state_name,
+                  country_name: customer.data.thong_tin_chung[0].country_name,
+                })}
+              </li>
+            </ul>
+          </div>
+        )}
+
         <div className={style['avatar']}>
-          <img src={process.env.PUBLIC_URL + '/assets/images/profile.jpg'} alt="" />
+          {loaded && (
+            <img
+              src={customer.data.thong_tin_chung[0].img || process.env.PUBLIC_URL + '/assets/images/no-image.jpg'}
+              alt=""
+            />
+          )}
         </div>
         <Card title={'Mục tiêu và nỗi lo cuộc sống'} background={styleColor[7].background} />
       </div>
