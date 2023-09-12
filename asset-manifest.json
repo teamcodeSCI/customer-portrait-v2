@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/customer-portrait-v2/static/css/main.7d5fb3d8.css",
-    "main.js": "/customer-portrait-v2/static/js/main.2fa60f38.js",
+    "main.css": "/customer-portrait-v2/static/css/main.5dada853.css",
+    "main.js": "/customer-portrait-v2/static/js/main.87ac0f0c.js",
     "static/js/787.aee12e75.chunk.js": "/customer-portrait-v2/static/js/787.aee12e75.chunk.js",
     "static/media/fontello.woff": "/customer-portrait-v2/static/media/fontello.8dc91a02a309b3385c02.woff",
     "static/media/fontello.woff2": "/customer-portrait-v2/static/media/fontello.4facf7687f63da4cc35e.woff2",
@@ -12,12 +12,12 @@
     "static/media/barlow-vietnamese-400-normal.woff2": "/customer-portrait-v2/static/media/barlow-vietnamese-400-normal.7e78e8338af7efeda712.woff2",
     "static/media/barlow-vietnamese-400-normal.woff": "/customer-portrait-v2/static/media/barlow-vietnamese-400-normal.2d6836f45b2037be41f3.woff",
     "index.html": "/customer-portrait-v2/index.html",
-    "main.7d5fb3d8.css.map": "/customer-portrait-v2/static/css/main.7d5fb3d8.css.map",
-    "main.2fa60f38.js.map": "/customer-portrait-v2/static/js/main.2fa60f38.js.map",
+    "main.5dada853.css.map": "/customer-portrait-v2/static/css/main.5dada853.css.map",
+    "main.87ac0f0c.js.map": "/customer-portrait-v2/static/js/main.87ac0f0c.js.map",
     "787.aee12e75.chunk.js.map": "/customer-portrait-v2/static/js/787.aee12e75.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.7d5fb3d8.css",
-    "static/js/main.2fa60f38.js"
+    "static/css/main.5dada853.css",
+    "static/js/main.87ac0f0c.js"
   ]
 }
