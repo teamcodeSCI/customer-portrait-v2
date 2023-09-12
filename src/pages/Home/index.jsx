@@ -15,6 +15,7 @@ const Home = () => {
   const companyId = searchParams.get('companyId');
   const partnerId = searchParams.get('partnerId');
   const customer = useSelector(customerSelector);
+  console.log('customer: ', customer);
 
   const loaded = useSelector(loadedCustomerSelector);
   const loading = useSelector(loadingCustomerSelector);
@@ -37,6 +38,11 @@ const Home = () => {
   }, [dispatch, companyId, partnerId, navigate]);
   return (
     <div className={style['home']}>
+      <div className={style['item']}>
+        <Card title={'Hoạt động hàng ngày'} background={styleColor[2].background} />
+        <Card title={'Thông tin khác'} background={styleColor[2].background} />
+        <Card title={'Mục tiêu và nỗi lo cuộc sống'} background={styleColor[7].background} />
+      </div>
       <div className={style['item']}>
         <Card title={'Nỗi lo lắng'} background={styleColor[0].background} />
         <Card title={'Tính cách'} background={styleColor[1].background} />
@@ -79,12 +85,16 @@ const Home = () => {
             />
           )}
         </div>
-        <Card title={'Mục tiêu và nỗi lo cuộc sống'} background={styleColor[7].background} />
       </div>
       <div className={style['item']}>
         <Card title={'Mong muốn'} background={styleColor[4].background} />
         <Card title={'Sở thích'} background={styleColor[5].background} />
         <Card title={'Tài chính'} background={styleColor[6].background} />
+      </div>
+      <div className={style['item']}>
+        <Card title={'Hành vi trên Internet'} background={styleColor[2].background} />
+        <Card title={'Thương hiệu yêu thích'} background={styleColor[2].background} />
+        <Card title={'Bị ảnh hưởng bởi'} background={styleColor[2].background} />
       </div>
       {customer === undefined && <Navigate to={'/page-not-found'} />}
     </div>

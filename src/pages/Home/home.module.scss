@@ -1,15 +1,12 @@
 .home {
   display: flex;
   justify-content: center;
-  gap: 30px;
+  gap: 20px;
   .item {
-    width: 35%;
+    width: 20%;
     display: flex;
     flex-direction: column;
-    gap: 30px;
-    &:nth-child(2n) {
-      width: 30%;
-    }
+    gap: 20px;
   }
 
   .title {
@@ -78,6 +75,11 @@
     ::-webkit-scrollbar-thumb {
       background-color: #ccc;
       border-radius: 4px;
+    }
+  }
+  @media (max-width: 912px) {
+    .title {
+      font-size: 18px;
     }
   }
 }
