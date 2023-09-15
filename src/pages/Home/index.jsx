@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchCustomer } from '@/features/customer/customerApi';
 import { customerSelector, loadedCustomerSelector, loadingCustomerSelector } from '@/features/customer/customerSlice';
 import { randomColor, setAddress } from '@/utils/util';
-import { Navigate, useNavigate, useSearchParams } from 'react-router-dom';
+import { Link, Navigate, useNavigate, useSearchParams } from 'react-router-dom';
 //535842
 const Home = () => {
   const dispatch = useDispatch();
@@ -39,14 +39,30 @@ const Home = () => {
   return (
     <div className={style['home']}>
       <div className={style['item']}>
-        <Card title={'Hoạt động hàng ngày'} background={styleColor[randomColor()].background} />
-        <Card title={'Thông tin khác'} background={styleColor[randomColor()].background} />
-        <Card title={'Mục tiêu và nỗi lo cuộc sống'} background={styleColor[randomColor()].background} />
+        <Card
+          data={customer.hoat_dong || []}
+          title={'Hoạt động hàng ngày'}
+          background={styleColor[randomColor()].background}
+        />
+        <Card data={customer.other || []} title={'Thông tin khác'} background={styleColor[randomColor()].background} />
+        <Card
+          data={customer.muc_tieu || []}
+          title={'Mục tiêu và nỗi lo cuộc sống'}
+          background={styleColor[randomColor()].background}
+        />
       </div>
       <div className={style['item']}>
-        <Card title={'Nỗi lo lắng'} background={styleColor[randomColor()].background} />
-        <Card title={'Tính cách'} background={styleColor[randomColor()].background} />
-        <Card title={'Gia đình/tình trạng hôn nhân'} background={styleColor[randomColor()].background} />
+        <Card
+          data={customer.noi_lo_lang || []}
+          title={'Nỗi lo lắng'}
+          background={styleColor[randomColor()].background}
+        />
+        <Card data={customer.tinh_cach || []} title={'Tính cách'} background={styleColor[randomColor()].background} />
+        <Card
+          data={customer.gia_dinh || []}
+          title={'Gia đình/tình trạng hôn nhân'}
+          background={styleColor[randomColor()].background}
+        />
       </div>
       <div className={style['item']}>
         <div style={{ background: styleColor[0].background }} className={style['title']}>
@@ -58,7 +74,7 @@ const Home = () => {
             <ul>
               <li>- Họ và tên: {customer.data.thong_tin_chung[0].name || '...'}</li>
               <li>- Giới tính: {gender || '...'}</li>
-              <li>- Ngày sinh: {customer.data.thong_tin_chung[0].bird_date || '...'}</li>
+              <li>- Ngày sinh: {customer.data.thong_tin_chung[0].birth_date || '...'}</li>
               <li>
                 - Địa chỉ:
                 {setAddress({
@@ -68,10 +84,16 @@ const Home = () => {
                   country_name: customer.data.thong_tin_chung[0].country_name,
                 })}
               </li>
+              <li>- Điện thoại: {customer.data.thong_tin_chung[0].phone || '...'}</li>
               <li>- Email: {customer.data.thong_tin_chung[0].pass_port || '...'}</li>
-              <li>- Facebook {customer.data.thong_tin_chung[0].phone || '...'}</li>
+              <li>
+                - Facebook:
+                <Link to={customer.data.thong_tin_chung[0].acc_facebook || '#'}>
+                  {customer.data.thong_tin_chung[0].acc_facebook || '...'}
+                </Link>
+              </li>
               <li>- Nghề nghiệp: {customer.data.thong_tin_chung[0].mobile || '...'}</li>
-              <li>- Trạng thái {customer.data.thong_tin_chung[0].mobile || '...'}</li>
+              <li>- Trạng thái {customer.data.thong_tin_chung[0].marital_status || '...'}</li>
             </ul>
           </div>
         )}
@@ -86,14 +108,26 @@ const Home = () => {
         </div>
       </div>
       <div className={style['item']}>
-        <Card title={'Mong muốn'} background={styleColor[randomColor()].background} />
-        <Card title={'Sở thích'} background={styleColor[randomColor()].background} />
-        <Card title={'Tài chính'} background={styleColor[randomColor()].background} />
+        <Card data={customer.mong_muon || []} title={'Mong muốn'} background={styleColor[randomColor()].background} />
+        <Card data={customer.so_thich || []} title={'Sở thích'} background={styleColor[randomColor()].background} />
+        <Card data={customer.tai_chinh || []} title={'Tài chính'} background={styleColor[randomColor()].background} />
       </div>
       <div className={style['item']}>
-        <Card title={'Hành vi trên Internet'} background={styleColor[randomColor()].background} />
-        <Card title={'Thương hiệu yêu thích'} background={styleColor[randomColor()].background} />
-        <Card title={'Bị ảnh hưởng bởi'} background={styleColor[randomColor()].background} />
+        <Card
+          data={customer.hanh_vi || []}
+          title={'Hành vi trên Internet'}
+          background={styleColor[randomColor()].background}
+        />
+        <Card
+          data={customer.thuong_hieu || []}
+          title={'Thương hiệu yêu thích'}
+          background={styleColor[randomColor()].background}
+        />
+        <Card
+          data={customer.anh_huong || []}
+          title={'Bị ảnh hưởng bởi'}
+          background={styleColor[randomColor()].background}
+        />
       </div>
       {customer === undefined && <Navigate to={'/page-not-found'} />}
     </div>
