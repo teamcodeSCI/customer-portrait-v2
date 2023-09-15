@@ -1,7 +1,7 @@
 {
   "name": "customer-portrait-v2",
   "version": "0.1.0",
-  "homepage": "https://teamcodeSCI.github.io/customer-portrait-v2",
+  "homepage": "https://scigroup.com.vn/app/customer-portrait",
   "private": true,
   "dependencies": {
     "@fontsource/barlow": "^5.0.8",

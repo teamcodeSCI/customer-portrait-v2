@@ -13,7 +13,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <Router basename="/customer-portrait-v2">
+      <Router basename="/app/customer-portrait">
         <App />
       </Router>
     </Provider>
