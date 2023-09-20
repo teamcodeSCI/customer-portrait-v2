@@ -7,7 +7,7 @@ const Card = ({ background, title, data }) => {
       <div style={{ background: background }} className={style['title']}>
         {title}
       </div>
-      <ul>{data.map((item) => item.data.map((e, idx) => <li key={idx}>{e}</li>))}</ul>
+      <ul>{data.map((item) => item.data.map((e, idx) => <li key={idx}>- {e}</li>))}</ul>
     </div>
   );
 };
