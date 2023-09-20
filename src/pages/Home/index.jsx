@@ -4,7 +4,7 @@ import Card from '@/components/Card';
 import { styleColor } from '@/utils/const';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchCustomer } from '@/features/customer/customerApi';
-import { customerSelector, loadedCustomerSelector, loadingCustomerSelector } from '@/features/customer/customerSlice';
+import { customerSelector, loadedCustomerSelector } from '@/features/customer/customerSlice';
 import { randomColor, setAddress } from '@/utils/util';
 import { Link, Navigate, useNavigate, useSearchParams } from 'react-router-dom';
 //535842
@@ -15,10 +15,9 @@ const Home = () => {
   const companyId = searchParams.get('companyId');
   const partnerId = searchParams.get('partnerId');
   const customer = useSelector(customerSelector);
-  console.log('customer: ', customer);
 
   const loaded = useSelector(loadedCustomerSelector);
-  const loading = useSelector(loadingCustomerSelector);
+
   let gender = '';
   if (loaded) {
     if (customer.data.thong_tin_chung[0].gender === 'female') {
