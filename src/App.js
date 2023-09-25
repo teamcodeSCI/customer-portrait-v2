@@ -7,7 +7,8 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<Main />}>
-        <Route path="/" element={<Home />} />
+        <Route path="/profile" element={<Home />} />
+        <Route path="*" element={<Navigate to={'/page-not-found'} />} />
       </Route>
       <Route path="/page-not-found" element={<PageNotFound />} />
       <Route path="*" element={<Navigate to={'/page-not-found'} />} />

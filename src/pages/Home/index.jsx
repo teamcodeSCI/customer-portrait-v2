@@ -12,8 +12,8 @@ const Home = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
-  const companyId = searchParams.get('companyId');
-  const partnerId = searchParams.get('partnerId');
+  const companyId = searchParams.get('company_id');
+  const partnerId = searchParams.get('partner_id');
   const customer = useSelector(customerSelector);
 
   const loaded = useSelector(loadedCustomerSelector);
