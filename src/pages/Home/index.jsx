@@ -96,7 +96,13 @@ const Home = () => {
                   country_name: customer.data.thong_tin_chung[0].country_name,
                 })}
               </li>
-              <li>- Điện thoại: {customer.data.thong_tin_chung[0].phone || '...'}</li>
+              <li>
+                - Điện thoại:{' '}
+                {customer.data.thong_tin_chung[0].phone.replace(
+                  customer.data.thong_tin_chung[0].phone.substring(3, 7),
+                  '****',
+                ) || '...'}
+              </li>
               <li>- Email: {customer.data.thong_tin_chung[0].pass_port || '...'}</li>
               <li>
                 - Facebook:
@@ -109,7 +115,7 @@ const Home = () => {
                 )}
               </li>
               <li>- Nghề nghiệp: {customer.data.thong_tin_chung[0].mobile || '...'}</li>
-              <li>- Trạng thái {customer.data.thong_tin_chung[0].marital_status || '...'}</li>
+              <li>- Trạng thái: {customer.data.thong_tin_chung[0].marital_status || '...'}</li>
             </ul>
           </div>
         )}
